@@ -14,7 +14,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register():void
     {
-        //
+        // para que carguen los estilos
+        /*if(config('app.env') === 'production')
+        {
+            $this->app['request']->server->set('HTTPS',false);
+        }*/
+
+
+        if (config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
     }
 
     /**
